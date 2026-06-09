@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI Representative</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="chat-panel" aria-label="AI representative chat">
+        <header>
+          <div>
+            <p class="eyebrow">AI Representative</p>
+            <h1 id="personaName">Interview Chat</h1>
+          </div>
+          <div class="status" id="status">Grounded</div>
+        </header>
+        <div id="messages" class="messages" aria-live="polite"></div>
+        <form id="composer" class="composer">
+          <textarea id="input" rows="2" placeholder="Ask about background, GitHub projects, fit, or availability"></textarea>
+          <button type="submit">Send</button>
+        </form>
+      </section>
+      <aside class="booking-panel" aria-label="Book an interview">
+        <h2>Book a Call</h2>
+        <label>
+          Your name
+          <input id="bookName" autocomplete="name" />
+        </label>
+        <label>
+          Email
+          <input id="bookEmail" type="email" autocomplete="email" />
+        </label>
+        <label>
+          Preferred time
+          <input id="bookStart" type="datetime-local" />
+        </label>
+        <button id="bookButton" type="button">Confirm Meeting</button>
+        <p id="bookingResult" class="hint"></p>
+      </aside>
+    </main>
+    <script src="/app.js"></script>
+  </body>
+</html>

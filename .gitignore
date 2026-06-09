@@ -1,0 +1,12 @@
+.DS_Store
+__pycache__/
+*.pyc
+.env
+.env.local
+.venv/
+data/corpus.json
+data/index.json
+data/github/
+outputs/*.pdf
+outputs/*.png
+outputs/*.log
