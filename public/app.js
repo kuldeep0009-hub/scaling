@@ -56,22 +56,36 @@ document.querySelector("#bookButton").addEventListener("click", async () => {
   result.textContent = "Checking calendar...";
 
   try {
-    const payload = {
-      name: document.querySelector("#bookName").value,
-      email: document.querySelector("#bookEmail").value,
-      start: document.querySelector("#bookStart").value,
-      source: "chat-ui"
-    };
-    const response = await fetch("/api/book", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(payload)
-    });
-    const data = await response.json();
-    result.textContent = data.message || data.error || "Booking request completed.";
-  } catch (error) {
-    result.textContent = "The booking service is unavailable right now.";
-  } finally {
-    button.disabled = false;
+  const response = await fetch("/api/book", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(payload)
+  });
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(
+      data.detail ||
+      data.error ||
+      "Booking failed."
+    );
   }
+
+  result.textContent =
+    data.message ||
+    "Booking completed successfully.";
+
+} catch (error) {
+
+  result.textContent =
+    error.message ||
+    "The booking service is unavailable right now.";
+
+} finally {
+
+  button.disabled = false;
+}
 });
